@@ -1,0 +1,91 @@
+.location-card {
+    height: 9cm;
+    width: 12cm;
+
+    border-radius: 8px;
+    border: 2px solid;
+
+    /*background-image: radial-gradient(black, white);*/
+    background-size: cover;
+}
+
+.location-header {
+    
+    padding-left: 2px;
+    padding-right: 5px;
+    padding-top :2px;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    
+    color: white;
+}
+
+.location-header.obstacle {
+    background-color: rgba(230, 0, 0, 0.4);
+    border-bottom: 1px dotted crimson;
+}
+
+.location-header.market {
+    background-color: rgba(250, 180, 0, 0.4);
+    border-bottom: 1px dotted rgba(250, 180, 0);
+}
+
+.location-header.producer {
+    background-color: rgba(150, 150, 150, 0.4);
+    border-bottom: 1px dotted rgba(150, 150, 150, 0.4);
+}
+
+.location-header-obstacle {
+    padding-right: 4px;
+    padding-top: 4px;
+}
+
+.location-title {
+    font-size: 0.8cm;
+    font-family: ui-monospace;
+}
+
+.location-speed > span {
+    font-size: 0.6cm;
+}
+
+.gold-cost {
+    color: gold;
+}
+
+.speed-cost {
+    color: aquamarine;
+}
+
+.resources {
+    display: flex;
+    padding: 5px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    height: 100%;
+}
+
+.resource {
+    margin: 0.5cm;
+    border: 1px solid;
+    border-radius: 20%;
+    padding: 0.5em;
+    background: rgba(195, 195, 201, 0.664);
+    font-size: 20px;
+}
+
+.location-footer {
+    margin-top: 5px;
+    font-size: 30px;
+    text-align: center;
+    place-content: center;
+    background-color: rgba(255,255,255,0.4);
+}
+
+
+.body-background {
+    background-size: cover;
+    height: 75%;
+}
