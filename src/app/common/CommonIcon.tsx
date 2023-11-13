@@ -9,15 +9,27 @@ interface EnvironmentIconInput {
     size:number;
 }
 
+function GetEnvironmentSvgUrl(name: string) : string {
+    const colorsList = !name || name.length == 0 ? ["sun"] : name.split("-");
+    let querystring = "colors="+ colorsList[0]
+    if (colorsList.length >= 1) {
+        querystring = "colors="+ colorsList[0] + "&" + "colors=" + colorsList[1];
+    }
+    return "/api/obstacles/svg?"+querystring;
+}
+
 export function EnvironmentIcon ({name="sun", size=25} : EnvironmentIconInput) {
     const widthIcon = size;
     const heightIcon = size;
-    let formattedSvgLink;  //= CreateEnvironment(name);
+    let formattedSvgLink;  
+    //formattedSvgLink= CreateEnvironment(name).svgPath;
     
+    formattedSvgLink = GetEnvironmentSvgUrl(name);
+    //"/api/obstacles/svg?colors=s&colors=w";
 
     return (
         <Image
-            src={formattedSvgLink.svgPath}
+            src={formattedSvgLink}
             alt={"It is an obstacle"}
             className="dark:invert"
             width={widthIcon}
@@ -31,11 +43,12 @@ export function ResourceIcon({name="water", size=20}: EnvironmentIconInput) {
     var resourceArchetype = CreateResource(name);
     var widthIcon = size;
     var heightIcon = size;
+    const resourceClassName = "resource-icon " +resourceArchetype.className;
     return (
         <Image 
-            className={resourceArchetype.className}
+            className={resourceClassName}
             src="/block-generic.svg"
-            alt="aaa"
+            alt={resourceArchetype.name}
             width={widthIcon}
             height={heightIcon}
         />

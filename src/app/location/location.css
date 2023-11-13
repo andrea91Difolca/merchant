@@ -21,6 +21,10 @@
     color: white;
 }
 
+.location-header span{
+    font-size: 0.8cm;
+}
+
 .location-header.obstacle {
     background-color: rgba(230, 0, 0, 0.4);
     border-bottom: 1px dotted crimson;
@@ -41,10 +45,7 @@
     padding-top: 4px;
 }
 
-.location-title {
-    font-size: 0.8cm;
-    font-family: ui-monospace;
-}
+
 
 .location-speed > span {
     font-size: 0.6cm;

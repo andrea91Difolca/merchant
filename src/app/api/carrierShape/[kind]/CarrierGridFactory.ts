@@ -41,7 +41,7 @@ abstract class CarrierShape implements CarrierFactory {
         this.Name = name.toLowerCase();
     }
     Is(kind: string): boolean {
-        return kind?.toLowerCase() === this.Name;
+        return kind?.toLowerCase()[0] === this.Name[0];
     }
     abstract Create(): CarrierGrid;
 }
@@ -71,7 +71,7 @@ class WagonShape extends CarrierShape {
         super ("wagon")
     }
     Create(): CarrierGrid {
-        return new CarrierInput(5, [[0,0], [1,0], [6,0], [7,0]], 8);
+        return new CarrierInput(8, [[0,0], [1,0], [6,0], [7,0]], 5);
     }
 }
 

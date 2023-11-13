@@ -46,7 +46,7 @@ export default function LocationCard({loc}: PlaceContainer)  {
  
         <div className={'location-header ' + loc.lType}>
                 
-            <span className="location-title">{loc.title}</span>
+            <span className="title">{loc.title}</span>
             <span className='location-header-obstacle'>
                 {obstacleIcons} 
             </span>
@@ -60,7 +60,7 @@ export default function LocationCard({loc}: PlaceContainer)  {
         <div className="location-footer row">
             <span>{loc.maxBlock}</span>
             <Image                 
-                src="blocks.svg"
+                src="/blocks.svg"
                 alt="aaa"
                 width={FooterSize}
                 height={FooterSize}
@@ -68,7 +68,7 @@ export default function LocationCard({loc}: PlaceContainer)  {
             />
             <span>{loc.neighbour.obstacle}</span>
             <Image                 
-                src="location/obstacle.svg"
+                src="/location/obstacle.svg"
                 alt="no man land"
                 width={FooterSize}
                 height={FooterSize}

@@ -1,11 +1,11 @@
-const RESOURCE_ARCHETYPES : string [] = [
+export const RESOURCE_ARCHETYPES : string [] = [
     "wood",
     "food",
     "water",
-    "spice",
     "stone",
+    "spice",
     "silk"
-]
+];
 
 export class ResourceArchetype {
     readonly name: string;
@@ -27,3 +27,4 @@ export default function CreateResource(name: string) {
     }
     return new ResourceArchetype(PossibleFind);
 }
+

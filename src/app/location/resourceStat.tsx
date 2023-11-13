@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import CreateResource, { ResourceArchetype } from '../common/ResourceArchetype';
 import { ResourceIcon } from '../common/CommonIcon';
-import { GetDefaultSizeForWheel } from '../common/ResourceWheel';
+import { GetDefaultSizeForWheel } from '../Wheel/ResourceWheel';
 
 export interface ResourceStatParam {
     name: string;

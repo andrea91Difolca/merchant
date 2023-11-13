@@ -1,0 +1,98 @@
+.action-card {
+    /* magic card 8.8x6.33*/
+    height: calc(8.8cm - 0.1cm - 0.1cm);
+    width: calc(6.33cm - 0.1cm - 0.1cm);
+
+    padding: 0.1cm;
+    border-radius: 8px;
+    border: 0.1cm solid;
+}
+
+.action-card .header{
+    text-align: center;
+    height: 0.5cm;
+}
+
+.action-upper-card {
+    display: flex;
+    height: 80%;
+}
+
+.action-card-body {
+    width: 80%;
+}
+
+.carrier.speed-action {
+    width: 20%;
+}
+
+.carrier-heightblock {
+    height: 0.95cm;
+    border-bottom: 0.05cm dashed;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.upside-down {
+    transform: rotateX(180deg) rotateY(180deg); 
+}
+
+
+
+.action-card .footer {
+    height: 20%;
+}
+
+.actions-choice {
+    max-width: 100%;
+    height: calc(100% - 0.5cm);
+    display: grid;
+    justify-content: center;
+    align-content: space-around;
+}
+
+.actions-choice .single-action {
+    max-width: 100%;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.benefit {
+    font-size: 0.3cm;
+}
+
+.actions-choice .cost {
+    padding: 0.2cm;
+    margin-right: 0.5cm;
+}
+
+.cost {
+    border-radius: 80%;
+    background-color: rgba(245, 207, 136, 0.2);
+}
+
+.carrier {
+    background-color: rgba(150, 150, 150, 0.4);
+}
+
+.carrier .prop {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-around;
+}
+
+.carrier .prop .condition {
+    border-radius: 80%;
+    background-color: rgba(253, 1, 1, 0.5);
+}
+
+.carrier.prop .cost {
+    padding: 0 0.1cm 0 0.1cm;
+}
+
+.carrier.prop .resistance {
+    
+}
