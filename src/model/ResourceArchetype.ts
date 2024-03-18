@@ -15,6 +15,8 @@ export class ResourceArchetype {
         this.name = name;
         this.className = "resource-"+ this.name + "-color";
     }
+
+    static GetInstance = CreateResource
 }
 
 export default function CreateResource(name: string) {

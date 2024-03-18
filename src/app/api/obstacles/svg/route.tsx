@@ -1,4 +1,4 @@
-import { GetColors } from '@/app/common/Environment';
+import { GetColors } from '@/util/Environment';
 import { type NextRequest } from 'next/server'
 import ObstacleSvg from './Obstacles';
  

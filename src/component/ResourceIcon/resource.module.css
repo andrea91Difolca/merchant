@@ -1,0 +1,35 @@
+.resourceIcon {
+    border-radius: 60%;
+}
+
+.wood {
+    /*filter: sepia(13%) saturate(2994%) hue-rotate(357deg) brightness(88%) contrast(91%);*/
+    background-color: brown;
+}
+
+.food {
+    background-color: #d4f805;
+    /*filter: sepia(86%) saturate(2386%) hue-rotate(9deg) brightness(95%) contrast(102%);*/
+}
+
+.water {
+    /*filter: sepia(19%) saturate(4166%) hue-rotate(161deg) brightness(93%) contrast(103%); */
+    background-color: aqua;
+}
+
+.spice {
+    /*filter: sepia(38%) saturate(6123%) hue-rotate(4deg) brightness(102%) contrast(110%);*/
+    background-color: blueviolet;
+}
+
+.stone {
+  background-color: grey;
+  /*filter: sepia(0%) saturate(0%) 
+  hue-rotate(250deg) brightness(97%) contrast(86%);*/
+}
+
+.silk {
+  background-color: pink;
+  /*filter: sepia(71%) saturate(6883%) 
+  hue-rotate(257deg) brightness(99%) contrast(94%);*/
+}

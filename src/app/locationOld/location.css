@@ -51,14 +51,6 @@
     font-size: 0.6cm;
 }
 
-.gold-cost {
-    color: gold;
-}
-
-.speed-cost {
-    color: aquamarine;
-}
-
 .resources {
     display: flex;
     padding: 5px;
@@ -85,8 +77,35 @@
     background-color: rgba(255,255,255,0.4);
 }
 
-
-.body-background {
-    background-size: cover;
-    height: 75%;
+:root {
+    --hexagon-unity : 2
 }
+
+
+.hexagon {
+    height: calc( var(--hexagon-unity) * 5cm );
+    width: calc( var(--hexagon-unity) * 3cm );
+    position:relative;
+    left: calc( var(--hexagon-unity) * 1.25cm );
+    box-sizing: border-box;
+    margin-left: calc( var(--hexagon-unity) * 1.25cm );
+    margin-right: calc( var(--hexagon-unity) * 1.25cm );
+  }
+  .hexagon::before, .hexagon::after {
+    content:"";
+    position: absolute;
+    height: 0;
+    width: 0; 
+    top:0;
+    /* half height */
+    border-top: calc( var(--hexagon-unity) / 2 * 5cm ) solid transparent;
+    border-bottom: calc( var(--hexagon-unity) / 2 * 5cm ) solid transparent; 
+  }
+  .hexagon::before {
+    left:calc( var(--hexagon-unity) * -1.25cm );
+    border-right:calc( var(--hexagon-unity) * 1.25cm ) solid red; 
+  }
+  .hexagon::after {
+    right:calc( var(--hexagon-unity) * -1.25cm );
+    border-left:calc( var(--hexagon-unity) * 1.25cm ) solid red; 
+  }

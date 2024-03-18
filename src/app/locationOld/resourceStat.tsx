@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import CreateResource, { ResourceArchetype } from '../common/ResourceArchetype';
-import { ResourceIcon } from '../common/CommonIcon';
+import CreateResource, { ResourceArchetype } from '../../model/ResourceArchetype';
+import { ResourceIcon } from '@/component/ResourceIcon/ResourceIcon';
 import { GetDefaultSizeForWheel } from '../Wheel/ResourceWheel';
 
 export interface ResourceStatParam {
@@ -19,7 +19,8 @@ export default function ResourceStat(resource : ResourceStatParam)  {
     var blockSize = resource.blockSize;
 
     if (!blockSize) {
-        blockSize = GetDefaultSizeForWheel(resource.name, resource.wType);
+        blockSize = 1
+        //GetDefaultSizeForWheel(resource.name, resource.wType);
     }
 
     return (                

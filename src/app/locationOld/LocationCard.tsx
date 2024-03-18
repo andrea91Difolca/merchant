@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import LocationObstacleIcon, {LocationObstacle}  from './LocationObstacleIcon';
-import MovementCost, { LocationCost } from './MovementCost';
+import Cost, { CostProps } from '../../component/Cost/Cost';
 import ResourceStat, { ResourceStatParam } from './resourceStat';
+import { EnvironmentIcon } from '../../component/CommonIcon/CommonIcon';
 
 
 export interface PlaceContainer {
@@ -17,7 +17,7 @@ interface Neighbour {
 export interface Place {
     title: string;
     lType: string;
-    cost: LocationCost;
+    cost: CostProps;
     icons: string[];
     bkgImg : string;
     resourceStat: ResourceStatParam[];
@@ -29,7 +29,7 @@ export default function LocationCard({loc}: PlaceContainer)  {
 
     const obstacleIcons = loc.icons.map((element, index)  => {
         const locationObstacle = {environment: element};
-        return <LocationObstacleIcon key={index} environment={locationObstacle.environment}></LocationObstacleIcon>;
+        return <EnvironmentIcon key={index} name={locationObstacle.environment} size={25} />;
     });
 
     const resources = loc.resourceStat.map((element, index)  => {
@@ -42,7 +42,8 @@ export default function LocationCard({loc}: PlaceContainer)  {
     const FooterSize = 40;
 
     return (
-        <div className='location-card' style={{ backgroundImage:  formattedBkgImage}}>
+
+        <div className='hexagon ' style={{ backgroundImage:  formattedBkgImage}}>
  
         <div className={'location-header ' + loc.lType}>
                 
@@ -50,7 +51,7 @@ export default function LocationCard({loc}: PlaceContainer)  {
             <span className='location-header-obstacle'>
                 {obstacleIcons} 
             </span>
-            <MovementCost gold={loc.cost.gold} speed={loc.cost.speed} ></MovementCost>
+            <Cost gold={loc.cost.gold} speed={loc.cost.speed} ></Cost>
         </div>
         <div className="body-background"  >
             <div className="resources" >

@@ -1,10 +1,6 @@
 import Image from 'next/image'
-import { CreateEnvironment } from './Environment';
-import CreateResource from './ResourceArchetype';
-import { NextRequest } from 'next/server';
 
-
-interface EnvironmentIconInput {
+export interface EnvironmentIconInput {
     name:string;
     size:number;
 }
@@ -39,18 +35,3 @@ export function EnvironmentIcon ({name="sun", size=25} : EnvironmentIconInput) {
     )
 }
 
-export function ResourceIcon({name="water", size=20}: EnvironmentIconInput) {
-    var resourceArchetype = CreateResource(name);
-    var widthIcon = size;
-    var heightIcon = size;
-    const resourceClassName = "resource-icon " +resourceArchetype.className;
-    return (
-        <Image 
-            className={resourceClassName}
-            src="/block-generic.svg"
-            alt={resourceArchetype.name}
-            width={widthIcon}
-            height={heightIcon}
-        />
-    )
-}

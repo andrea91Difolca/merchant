@@ -3,25 +3,24 @@ import Image from 'next/image'
 
 export class Environment {
     readonly name : string;
-    readonly svgName: string;
-    readonly svgPath : string;
     readonly color :string;
     readonly cost: number
 
-    constructor(name: string, svgLink: string, color: string, _cost:number) {
+    constructor(name: string, color: string, _cost:number) {
         this.name = name;
-        this.svgName = svgLink;
-        this.svgPath = "/environment/"+this.svgName+".svg";
         this.color = color;
         this.cost = _cost;
+    }
+    GetAcr() {
+        return this.name.charAt(0);
     }
 }
 
 export const Environments : Environment[] = [
-    new Environment("sun"       , "sun",        "yellow", -1.5),
-    new Environment("mountain"  , "mountain",   "white",  -2),
-    new Environment("city"      , "sword",      "red",  -1),
-    new Environment("wild"      , "forest",     "green", -2)
+    new Environment("sun"       ,"yellow",  1.5),
+    new Environment("mountain"  ,"white",   2),
+    new Environment("city"      ,"red",     0.5),
+    new Environment("wild"      ,"green",   1)
 ]
 
 function FindByFirstLetters(toCheck: string, match:string) {

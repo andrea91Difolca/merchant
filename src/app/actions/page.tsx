@@ -1,47 +1,29 @@
 import '../common.css'
 import './actions.css'
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, ReactNode } from "react";
 import { useState } from "react";
 import Image from 'next/image'
-import { EnvironmentIcon } from "../common/CommonIcon";
-import CarrierIcon from '../common/Carriers';
+import { EnvironmentIcon } from "../../component/CommonIcon/CommonIcon";
+import CarrierIcon from '../../component/Carrier/Carriers';
+import Cost from '../../component/Cost/Cost';
 
 
-/*
-export default function ActionDisplay () {
-
-    const [locations, setLocation] = useState<Actions>();
-  
-    const onFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const target = e.target;
-      const files = target.files;
-      const firstFile = files && files.length > 0 ? files[0] : undefined;
-
-      firstFile?.text()
-        .then(  (textContent) => {
-            const loc = JSON.parse(textContent);
-
-            setLocation({locations: loc});
-    });
-  };
-    return (
-      <div>
-        <p>Select File</p>
-        <input type="file" onChange={onFileChange} />
-        <h1>Locations</h1>
-        
-      </div>
-    );
+interface CarrierProps {
+  speedForLoad : number[],//max6heighof load
+  cost : number,
+  resistance: string[],
+  subtitle: string
 }
-*/
-
 
 interface ActionCardInput {
-
+  cardTitle : string,
+  childrens : ReactNode[],
+  carrier : CarrierProps
 }
 
 interface ActionCardContainer {
     a :ActionCardInput
+    
 }
 
 export default function ActionCard({a} : ActionCardContainer) {
@@ -60,9 +42,7 @@ export default function ActionCard({a} : ActionCardContainer) {
       <div className='actions-choice'>
 
         <div className='single-action'>
-          <div>
-            <span className="cost">0</span>
-          </div>
+          <Cost gold={0} speed={1} />
           <span className="benefit description-font">1 x <CarrierIcon name='human' key={1} size={25} /> </span>
         </div>
         <div className='single-action'>

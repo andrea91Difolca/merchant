@@ -12,7 +12,7 @@ export interface WheelsDescriptor {
 	[resource: string] : WheelKindDescriptor
 }
 
-export const WheelKind = ["A","B","C"];
+export const WheelKind = {A: "A", B:"B", C:"C"};
 
 const wheels : WheelsDescriptor = 
 {

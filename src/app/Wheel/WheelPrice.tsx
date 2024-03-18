@@ -1,10 +1,17 @@
 import { NumericLiteral } from "typescript";
-import { GetAvg } from "../common/CommonUtilities";
-import wheels, { WheelKindDescriptor } from "./WheelDescriptor";
-
+import { DictionaryOfQueue, GetAvg } from "../../util/ListUtils";
+import wheels, { WheelKindDescriptor } from "../../model/WheelDescriptor";
 
 interface AvgForKind {
     [Kind: string] : number
+}
+
+export function SpecificWheelsToString(wheels : SpecificWheel[], kinds : string[]) {
+    const dictionary = new DictionaryOfQueue<string>();
+
+    wheels.forEach(w => dictionary.add(w.kind,  w.resource));
+
+    return kinds.map( kind =>  dictionary.get(kind).pop() ?? '-');
 }
 
 export interface SpecificWheel {

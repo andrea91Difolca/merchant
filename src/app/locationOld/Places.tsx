@@ -2,7 +2,7 @@
 
 import { start } from "repl";
 import LocationCard, { Place, PlaceContainer } from "./LocationCard";
-import { SplitArray } from "../common/CommonUtilities";
+import { SplitArray } from "../../util/ListUtils";
 
 
 

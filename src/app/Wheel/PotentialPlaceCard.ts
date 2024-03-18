@@ -1,13 +1,7 @@
 import WheelPrice, { SpecificWheel } from "./WheelPrice";
-import {GetSum, GetMax} from "../common/CommonUtilities";
+import {GetSum, GetMax, GetAvg} from "../../util/ListUtils";
 
-function ReduceBp(pSw:SpecificWheel,sw:SpecificWheel, index:number, tArray:SpecificWheel[]) {
-    const previosBp = pSw ? 
-        WheelPrice.GetSpecificPrice(pSw) : 0;
-    return previosBp + WheelPrice.GetSpecificPrice(sw);
-}
-
-class SpecificWheelIncome {
+export class SpecificWheelIncome {
     wheel : SpecificWheel;
     income: number;
     constructor(_wheel : SpecificWheel, _income : number) {
@@ -21,42 +15,55 @@ export class PotentialPlaceCard {
     potentialIncome : number;
     income : number;
     resourceIncomes : SpecificWheelIncome[];
+    resourcesKind : string[];
     constructor(permutation: string[], resourceKind: string[]) {
         if (permutation.length != resourceKind.length) {
             throw new Error("Permutation and assignable kind should be the same in number");
         }
+        this.resourcesKind = resourceKind;
         const aResources : string[] = [];
         const bResources : string[] = [];
         const cResources : string[] = [];
+        const resourceIncomes : SpecificWheelIncome[] = [];
         let resourceToFill : string[] = [];
         for (let index = 0; index < permutation.length; index++) {
-            switch(resourceKind[index]) {
-                case "A" : {
-                    resourceToFill = aResources; 
-                } break;
-                case "B" : {
-                    resourceToFill = bResources; 
-                } break;
-                case "C" : {
-                    resourceToFill = cResources; 
-                } break;
-            }
+            
+            const kind = resourceKind[index];
             const resource = permutation[index];
-            if (resource != "") 
+            if (resource && resource != "") {
+
+                switch(kind) {
+                    case "A" : {
+                        resourceToFill = aResources; 
+                    } break;
+                    case "B" : {
+                        resourceToFill = bResources; 
+                    } break;
+                    case "C" : {
+                        resourceToFill = cResources; 
+                    } break;
+                }
                 resourceToFill.push(resource);
+            } else {
+                //Case in which resource is blank
+                resourceIncomes.push(new SpecificWheelIncome({kind: kind, resource: resource },0));
+            }
         }
         
         const CandBIncomes = this.GetResourceCAndBIncomes(bResources, cResources);
-        this.directIncome =  CandBIncomes && CandBIncomes.length > 0 ? GetSum(CandBIncomes.map(elem => elem.income)) : 0;
+        this.directIncome =  CandBIncomes && CandBIncomes.length > 0 ? GetAvg(CandBIncomes.map(elem => elem.income)) : 0;
         const AIncomes = this.GetAIncomes(aResources, CandBIncomes, this.directIncome);
         this.potentialIncome = AIncomes && AIncomes.length > 0 ?  GetMax(AIncomes.map(elem => elem.income)) : 0;
         this.income = GetMax([this.potentialIncome, this.directIncome]);
-        this.resourceIncomes = new Array< SpecificWheelIncome>().concat(CandBIncomes).concat(AIncomes);
+        this.resourceIncomes = resourceIncomes
+            .concat(CandBIncomes)
+            .concat(AIncomes)
+            .sort((a,b) => a.wheel.kind.charCodeAt(0) - b.wheel.kind.charCodeAt(0));
     }
 
     private ConvertToSpecificWheel(_kind: string, resources : string[]) : SpecificWheel[] {
         return resources.map(elem => {
-           return {kind : _kind, resource : elem }; 
+           return {kind : _kind, resource : elem };
         });
     }
     private GetResourceCAndBIncomes (bResources : string[], cResources: string[]) : SpecificWheelIncome[] {
@@ -72,7 +79,6 @@ export class PotentialPlaceCard {
     //We want 
     private GetAIncomes(aResources: string[], CandBIncome : SpecificWheelIncome[], directIncome: number) : SpecificWheelIncome[] {
         if (!aResources || aResources.length === 0) {
-            console.log("A resource vuoto")
            return []; 
         }
         return aResources.map(aElem =>  {
@@ -85,5 +91,11 @@ export class PotentialPlaceCard {
             return new SpecificWheelIncome(toElem,
                 value);
         });
+    }
+    IsPotentiallyUseful() {
+        return this.potentialIncome > this.directIncome ? 1 : -1;
+    }
+    GetMaxGain() {
+        return this.potentialIncome > 0 ? (this.potentialIncome / this.directIncome) : this.directIncome;
     }
 }

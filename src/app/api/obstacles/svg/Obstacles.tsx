@@ -15,7 +15,7 @@ export default function ObstacleSvg({colors} : IObstacleSvg) {
             strokeDasharray="calc(500 * 31.4 / 1000) 31.4" transform="rotate(135) translate( -10 -24.14)"/>
             <path d="
                 M 0, 20 
-                L 20, 0 z"  stroke-width= "1" stroke="black" />
+                L 20, 0 z"  strokeWidth= "1" stroke="black" />
         </>
     );
 

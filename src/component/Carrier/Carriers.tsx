@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import CarrierGridFactory from '../api/carrierShape/[kind]/CarrierGridFactory';
-import { CarrierSizeCalculator } from '../api/carrierShape/Carrier';
+import CarrierGridFactory from '../../app/api/carrierShape/[kind]/CarrierGridFactory';
+import { CarrierSizeCalculator } from '../../app/api/carrierShape/Carrier';
 
 
 interface CarrieIconInput {

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import CarrierIcon from '../common/Carriers'
+import CarrierIcon from '../../component/Carrier/Carriers'
 
 export default function CarrierPage() {
     return (
