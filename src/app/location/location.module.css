@@ -1,3 +1,14 @@
+.obstacle {
+    --hexCardBgColor : rgba(230, 0, 0, 0.4);
+    /** border-color: crimson;**/
+}
+.market {
+    --hexCardBgColor : rgba(250, 180, 0, 0.4);
+    /*border-color: rgba(250, 180, 0);*/
+}
+.producer {
+    --hexCardBgColor : rgba(150, 150, 150, 0.4);
+}
 .hexagon {
     height: calc( var(--hexagon-unity) * 5cm );
     width: calc( var(--hexagon-unity) * 3cm );
@@ -18,78 +29,12 @@
 }
 .hexagon::before {
     left:calc( var(--hexagon-unity) * -1.25cm );
-    border-right:calc( var(--hexagon-unity) * 1.25cm ) solid red; 
+    border-right:calc( var(--hexagon-unity) * 1.25cm ) solid var(--hexCardBgColor); 
 }
 .hexagon::after {
     right:calc( var(--hexagon-unity) * -1.25cm );
-    border-left:calc( var(--hexagon-unity) * 1.25cm ) solid red; 
+    border-left:calc( var(--hexagon-unity) * 1.25cm ) solid var(--hexCardBgColor); 
 }
-
-.header {
-    
-    padding-left: 2px;
-    padding-right: 5px;
-    padding-top :2px;
-    height: 10%;
-    display: flex;
-    justify-content: space-between;
-    
-    color: white;
-    border-bottom: 1px dotted
-}
-
-.headerSpan{
-    font-size: 0.8cm;
-}
-
-.obstacle {
-    background-color: rgba(230, 0, 0, 0.4);
-    border-color: crimson;
-}
-
-.market {
-    background-color: rgba(250, 180, 0, 0.4);
-    border-color: rgba(250, 180, 0);
-}
-
-.producer {
-    background-color: rgba(150, 150, 150, 0.4);
-    border-color: rgba(150, 150, 150, 0.4);
-}
-
-.obstacles {
-    padding-right: 4px;
-    padding-top: 4px;
-}
-
-.resources {
-    display: flex;
-    padding: 5px;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: center;
-    height: 100%;
-}
-
-.resource {
-    margin: 0.5cm;
-    border: 1px solid;
-    border-radius: 20%;
-    padding: 0.5em;
-    background: rgba(195, 195, 201, 0.664);
-    font-size: 20px;
-}
-
-.footer {
-    margin-top: 5px;
-    font-size: 30px;
-    text-align: center;
-    place-content: center;
-    background-color: rgba(255,255,255,0.4);
-}
-
-
-.bodyBackground {
-    background-size: cover;
-    height: 75%;
+.cardBody {
+    background-color: var(--hexCardBgColor);
 }

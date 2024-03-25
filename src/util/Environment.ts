@@ -1,6 +1,3 @@
-import Image from 'next/image'
-
-
 export class Environment {
     readonly name : string;
     readonly color :string;
