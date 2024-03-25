@@ -46,12 +46,18 @@ function SortByPotentialGainDesc (a: PotentialPlaceCard, b :PotentialPlaceCard) 
     return b.GetMaxGain() - a.GetMaxGain();
 }
 
-function GetObstacleList(obstWrapper : LocationConstants) {
+export function GetPotentialObstacleWrapper(obstWrapper : LocationConstants) : PlaceCardObstacleWrapper[] {
     const allKind = obstWrapper.kind;
-    const headerKind = allKind.map((elem, index) => <th key={index}>{elem}</th>);
     const placeCard = obstWrapper.list.map(elem => new PotentialPlaceCard(elem, allKind));
     placeCard.sort(SortByPotentialGainDesc);
     const obstaclePLaceCard :PlaceCardObstacleWrapper[] = AssignObstacle(placeCard);
+    return obstaclePLaceCard;
+}
+
+function GetObstacleList(obstWrapper : LocationConstants) {
+    const allKind = obstWrapper.kind;
+    const headerKind = allKind.map((elem, index) => <th key={index}>{elem}</th>);
+    const obstaclePLaceCard = GetPotentialObstacleWrapper(obstWrapper);
     const placedCard = obstaclePLaceCard.map((elem, index) => 
         <SingleObstacleCardRow key={index*3} wrapper={elem}  rowNum={index} allKind={allKind}  /> )
     return  {header : headerKind, obs : placedCard };

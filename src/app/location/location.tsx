@@ -26,6 +26,8 @@ export function LocationHex( {obstacles,specificWheels, cost, kind} : LocationHe
     
     const iconSize =25;
 
+    const genericContentCss = "rounded-full bg-slate-400";
+
     const obstacleIcons = obstacles.map( (obs,idx) => (
         <EnvironmentIcon key={idx} name={obs} size={iconSize} />
     ));
@@ -33,13 +35,13 @@ export function LocationHex( {obstacles,specificWheels, cost, kind} : LocationHe
     return (
     <div className={styles.hexagon + ' '+ styles[kind]}>
         <div className={styles.cardBody +" h-full my-auto flex flex-col justify-around"} >
-            <div className="p-2 flex  justify-center">
+            <div className={genericContentCss +  " p-2 flex  justify-center" } >
                     {obstacleIcons}                 
             </div>
-            <div className="py-3 pe-2" >
+            <div className= {genericContentCss +" py-3 pe-2"} >
                 <ResourceMarket resourceIncomes={specificWheels} />
             </div>
-            <div className="p-2 flex  justify-center">
+            <div className={genericContentCss +" p-2 flex  justify-center"}>
                 {Cost(cost)}
             </div>
         </div>

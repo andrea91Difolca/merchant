@@ -1,17 +1,18 @@
 import { GetHexCardFromCalculatedCard } from "@/util/PropsBuilder";
-import { PotentialPlaceCard } from "../Wheel/PotentialPlaceCard";
-import ResourceMarket from "./ResourceMarket/ResourceMarket";
-import { LocationHex, LocationHexProps } from './location';
-import AssignObstacle from "../PotentialObstacle/ObstacleGenerator";
+import { LocationHex } from './location';
+import { GetPotentialObstacleWrapper } from "../PotentialObstacle/page";
+import { ListOfProducers } from "../PotentialObstacle/LocationConstants";
+import Places from "./Places/Places"
 
 
 export default function page () {
-    const potentialCardSample = new PotentialPlaceCard(  ["food","stone","spice"],  ["A","B","C"]);
-    const obstacle = AssignObstacle([potentialCardSample]);
-    const hexCard = GetHexCardFromCalculatedCard('producer',obstacle[0]);
+    const pObstWrapper = GetPotentialObstacleWrapper(ListOfProducers);
+    const hexCardInput = pObstWrapper.map(v => GetHexCardFromCalculatedCard("producer",v))
     return (
-        <>
-            {LocationHex(hexCard)}
-        </>
+        <div >
+            <Places kind="producer" ></Places>
+            <Places kind="market" ></Places>
+            <Places kind="obstacle" ></Places>
+        </div>
     );
 }
